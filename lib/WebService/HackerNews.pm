@@ -69,6 +69,13 @@ sub max_item_id
     return $result;
 }
 
+sub changed_items_and_users
+{
+    my $self    = shift;
+    my $result = $self->$get('updates.json');
+    return ($result->{items} || [], $result->{profiles} || []);
+}
+
 1;
 
 =head1 NAME
@@ -95,7 +102,8 @@ Feel free to hack on it and send me pull requests.
 
 =head1 METHODS
 
-Most of the methods in the official doc are implemented.
+As of version 0.02, this implements all of the functions
+listed in the official documentation for the API.
 
 =head2 top_story_ids
 
@@ -127,6 +135,25 @@ listed in the official doc.
 =head2 max_item_id
 
 Returns the max item id.
+
+=head2 changed_items_and_users
+
+Returns two array references, which contain IDs for changed items
+and usernames for changed users:
+
+ use WebService::HackerNews 0.02;
+
+ my $hn              = WebService::HackerNews->new;
+ my ($items, $users) = $hn->changed_items_and_users;
+
+ process_changed_items(@$items);
+ process_changed_users(@$users);
+
+The L<API documentation for this function|https://github.com/HackerNews/API#changed-items-and-profiles>
+doesn't make clear "changed since when".
+
+This method was added in version 0.02, so you should specify that as the
+minimum version of the module, as above.
 
 =head1 SEE ALSO
 
