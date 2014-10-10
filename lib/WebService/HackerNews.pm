@@ -4,7 +4,6 @@ use 5.006;
 use Moo;
 use HTTP::Tiny;
 use JSON qw(decode_json);
-use Data::Dumper;
 
 use WebService::HackerNews::Item;
 use WebService::HackerNews::User;

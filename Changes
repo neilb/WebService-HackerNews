@@ -2,6 +2,7 @@ Revision history for Perl module WebService::HackerNews
 
 0.02 2014-10-10 NEILB
     - The SYNOPSIS was missing a line, which meant it wouldn't work.
+    - I'd left "use Data::Dumper" in from while I was hacking.
 
 0.01 2014-10-09 NEILB
     - First lash-up released to CPAN
