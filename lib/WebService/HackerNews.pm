@@ -82,6 +82,7 @@ WebService::HackerNews - interface to the official HackerNews API
  my $hn     = WebService::HackerNews->new;
  my @top100 = $hn->top_story_ids;
  my $item   = $hn->item( $top100[0] );
+ my $user   = $hn->user($item->by);
 
  printf qq{"%s" by %s (karma: %d)\n},
         $item->title, $item->by, $user->karma;
