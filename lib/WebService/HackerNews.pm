@@ -100,6 +100,29 @@ L<Hacker News API|https://github.com/HackerNews/API>.
 This is very much a lash-up at the moment, and liable to change.
 Feel free to hack on it and send me pull requests.
 
+It provides a semi object-oriented interface to the API.
+You start off by creating an instance of C<WebService::HackerNews>:
+
+ $hn = WebService::HackerNews->new;
+
+You can then call one of the methods to either get information about
+I<items> or I<users>.
+
+An item is either a story, a job, a comment, a poll, or a pollopt. 
+All items live in a single space, and are identified by a unique
+integer identifier, or B<id>. Given an id, you can get all information
+for the associated item using the C<item()> method.
+
+A user is like an item, but represents a registered user of HackerNews.
+The id for a user isn't an integer, but is a username.
+Given a username, you can get all information for the associated user
+with the C<user()> method.
+
+Items and User are represented with classes, but where the attributes
+of items and users relate to further items and classes, they are represented
+as references to arrays of ids, rather than returning references to arrays
+of other objects.
+
 =head1 METHODS
 
 As of version 0.02, this implements all of the functions
@@ -149,8 +172,11 @@ and usernames for changed users:
  process_changed_items(@$items);
  process_changed_users(@$users);
 
-The L<API documentation for this function|https://github.com/HackerNews/API#changed-items-and-profiles>
-doesn't make clear "changed since when".
+This method returns "recently changed items and users",
+without defining 'changed since when?'.
+If you want to track changes, you'd just have to poll on a regular basis.
+
+This method is really aimed at people using Firebase streaming API.
 
 This method was added in version 0.02, so you should specify that as the
 minimum version of the module, as above.

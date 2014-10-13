@@ -1,5 +1,10 @@
 Revision history for Perl module WebService::HackerNews
 
+0.03 2014-10-13 NEILB
+    - Improved the documentation for WebService::HackerNews, and added
+      some basic doc for WebService::HackerNews::Item and
+      WebService::HackerNews::User.
+
 0.02 2014-10-10 NEILB
     - Added changed_items_and_users() method, which returns references
       to arrays of changed items and changed users. Changed since when,
