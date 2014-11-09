@@ -4,6 +4,7 @@ use 5.006;
 use Moo;
 use HTTP::Tiny;
 use JSON qw(decode_json);
+use IO::Socket::SSL;
 
 use WebService::HackerNews::Item;
 use WebService::HackerNews::User;
@@ -11,7 +12,6 @@ use WebService::HackerNews::User;
 has ua => (
     is => 'ro',
     default => sub {
-        require HTTP::Tiny;
         HTTP::Tiny->new;
     },
 );
