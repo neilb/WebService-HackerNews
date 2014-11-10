@@ -36,10 +36,15 @@ L<Item documentation|https://github.com/HackerNews/API#users>:
 =over 4
 
 =item * B<id>        - The user's unique username. Case-sensitive. Required.
+
 =item * B<delay>     - Delay in minutes between a comment's creation and its visibility to other users.
+
 =item * B<created>   - Creation date of the user, in Unix Time.
+
 =item * B<karma>     - The user's karma.
+
 =item * B<about>     - The user's optional self-description. HTML.
+
 =item * B<submitted> - List of the user's stories, polls and comments.
 
 =back
