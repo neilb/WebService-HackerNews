@@ -170,7 +170,7 @@ listed in the official documentation for the API.
 
 =head2 top_story_ids
 
-Returns a list of ids for the current top 100 stories.
+Returns a list of ids for the current top 500 stories.
 
  my @ids = $hn->top_story_ids;
 
