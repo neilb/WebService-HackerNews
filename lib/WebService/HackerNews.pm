@@ -43,6 +43,46 @@ sub top_story_ids
     return @$result;
 }
 
+sub best_story_ids
+{
+    my $self = shift;
+    my $result = $self->$get('beststories.json');
+
+    return @$result;
+}
+
+sub new_story_ids
+{
+    my $self = shift;
+    my $result = $self->$get('newstories.json');
+
+    return @$result;
+}
+
+sub ask_story_ids
+{
+    my $self = shift;
+    my $result = $self->$get('askstories.json');
+
+    return @$result;
+}
+
+sub show_story_ids
+{
+    my $self = shift;
+    my $result = $self->$get('showstories.json');
+
+    return @$result;
+}
+
+sub job_story_ids
+{
+    my $self = shift;
+    my $result = $self->$get('jobstories.json');
+
+    return @$result;
+}
+
 sub item
 {
     my $self   = shift;
@@ -86,8 +126,8 @@ WebService::HackerNews - interface to the official HackerNews API
 
  use WebService::HackerNews;
  my $hn     = WebService::HackerNews->new;
- my @top100 = $hn->top_story_ids;
- my $item   = $hn->item( $top100[0] );
+ my @top500 = $hn->top_story_ids;
+ my $item   = $hn->item( $top500[0] );
  my $user   = $hn->user($item->by);
 
  printf qq{"%s" by %s (karma: %d)\n},
@@ -133,6 +173,46 @@ listed in the official documentation for the API.
 Returns a list of ids for the current top 100 stories.
 
  my @ids = $hn->top_story_ids;
+
+You can then call C<item()> to get the details for specific items.
+
+=head2 best_story_ids
+
+Returns a list of ids for the current top 500 best stories. 
+
+ my @ids = $hn->best_story_ids;
+
+You can then call C<item()> to get the details for specific items.
+
+=head2 new_story_ids
+
+Returns a list of ids for the current top 500 new stories.
+
+ my @ids = $hn->new_story_ids;
+
+You can then call C<item()> to get the details for specific items.
+
+=head2 ask_story_ids
+
+Returns a list of ids for the top 200 latest 'Ask hacker news' stories.
+
+ my @ids = $hn->ask_story_ids;
+
+You can then call C<item()> to get the details for specific items.
+
+=head2 show_story_ids
+
+Returns a list of ids for the 200 latest 'Show Hacker news' stories.
+
+ my @ids = $hn->show_story_ids
+
+You can then call C<item()> to get the details for specific items.
+
+=head2 jobs_story_ids
+
+Return a list of ids for the 200 latest 'Jobs' stories.
+
+ my @ids = $hn->jobs_Story_ids
 
 You can then call C<item()> to get the details for specific items.
 
