@@ -10,6 +10,7 @@ perl:
 install:
   - cpanm Dist::Zilla
   - dzil authordeps --missing | cpanm
+  - dzil listdeps --missing | cpanm
   - dzil build
 script:
   - dzil test
