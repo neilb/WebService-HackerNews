@@ -2,19 +2,21 @@ package WebService::HackerNews::Item;
 
 use Moo;
 
-has id      => (is => 'ro');
-has deleted => (is => 'ro');
-has type    => (is => 'ro');
-has by      => (is => 'ro');
-has time    => (is => 'ro');
-has text    => (is => 'ro');
-has dead    => (is => 'ro');
-has parent  => (is => 'ro');
-has kids    => (is => 'ro');
-has url     => (is => 'ro');
-has score   => (is => 'ro');
-has title   => (is => 'ro');
-has parts   => (is => 'ro');
+has id          => ( is => 'ro' );
+has deleted     => ( is => 'ro' );
+has type        => ( is => 'ro' );
+has by          => ( is => 'ro' );
+has time        => ( is => 'ro' );
+has text        => ( is => 'ro' );
+has dead        => ( is => 'ro' );
+has parent      => ( is => 'ro' );
+has poll        => ( is => 'ro' );
+has kids        => ( is => 'ro' );
+has url         => ( is => 'ro' );
+has score       => ( is => 'ro' );
+has title       => ( is => 'ro' );
+has parts       => ( is => 'ro' );
+has descendants => ( is => 'ro' );
 
 1;
 
@@ -58,6 +60,8 @@ L<Item documentation|https://github.com/HackerNews/API#items>:
 
 =item * B<parent> - The item's parent. For comments, either another comment or the relevant story. For pollopts, the relevant poll.
 
+=item * B<poll> - The pollopt's associated poll.
+
 =item * B<kids>  - The ids of the item's comments, in ranked display order.
 
 =item * B<url>   - The URL of the story.
@@ -67,6 +71,8 @@ L<Item documentation|https://github.com/HackerNews/API#items>:
 =item * B<title> - The title of the story or poll.
 
 =item * B<parts> - A list of related pollopts, in display order.
+
+=item * B<descendants> - In the case of stories or polls, the total comment count.
 
 =back
 
