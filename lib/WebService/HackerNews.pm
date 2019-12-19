@@ -1,6 +1,7 @@
 package WebService::HackerNews;
 
 use 5.006;
+use Carp qw/croak/;
 use Moo;
 use JSON qw(decode_json);
 
@@ -26,6 +27,8 @@ my $get = sub
     my ($self, $relpath) = @_;
     my $url      = $self->base_url.'/'.$relpath;
     my $response = $self->ua->get($url);
+
+    croak $response->{content} if $response->{status} != 200;
 
     # This is a hack. Can I use JSON->allow_nonref to handle
     # the fact that maxitem returns an int rather than [ int ]?
